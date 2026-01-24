@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeepOrDeleteMediaCleaner.Views.ImageScannerPage"
+             xmlns:res="clr-namespace:KeepOrDeleteMediaCleaner.Resources.Strings"
+             x:Name="ThisPage"
+             Title="{x:Static res:AppResources.ImageTitle}">
+
+    <!-- Design-only resources: colors and styles. No bindings/commands changed, no tags moved. -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="BgStart">#FFF7FBFF</Color>
+            <Color x:Key="BgEnd">#FFFFFFFF</Color>
+            <Color x:Key="Accent">#2563EB</Color>
+            <Color x:Key="Danger">#DC2626</Color>
+            <Color x:Key="CardBg">#FFFFFFFF</Color>
+            <Color x:Key="MutedText">#6B7280</Color>
+            <Color x:Key="CaptionText">#F8FAFC</Color>
+
+            <Style x:Key="IndexLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource MutedText}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="CarouselCaptionStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource MutedText}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="HeightRequest" Value="44" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="DangerButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
+                <Setter Property="BackgroundColor" Value="{StaticResource Danger}" />
+            </Style>
+
+            <Style x:Key="CardGridStyle" TargetType="Grid">
+                <Setter Property="Padding" Value="12" />
+                <Setter Property="BackgroundColor" Value="{StaticResource CardBg}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- Gentle page gradient -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="{StaticResource BgStart}" Offset="0.0" />
+            <GradientStop Color="{StaticResource BgEnd}" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <Label Text="{Binding CurrentIndexText}"
+       HorizontalOptions="Center"
+       FontSize="14"
+       Style="{StaticResource IndexLabelStyle}"/>
+
+        <CarouselView
+            ItemsSource="{Binding MediaFiles}"
+            x:Name="ImagesCarousel"
+            HeightRequest="400"
+            Position="{Binding CurrentIndex, Mode=TwoWay}"
+            ItemsUpdatingScrollMode="KeepLastItemInView">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="*,Auto" Padding="16" Style="{StaticResource CardGridStyle}">
+                        <Image Source="{Binding FilePath}" Aspect="AspectFill" Margin="0,0,0,8"/>
+                        <VerticalStackLayout Grid.Row="1" Spacing="4">
+
+                            <Label Text="{Binding DisplayName}"
+                                   HorizontalOptions="Center"
+                                   FontSize="14"
+                                   Style="{StaticResource CarouselCaptionStyle}"/>
+
+                            <Label Text="{Binding DateCreated}"
+                                   HorizontalOptions="Center"
+                                   FontSize="14"
+                                   Style="{StaticResource CarouselCaptionStyle}"/>
+
+                            <Label Text="{Binding SizeInMBString}"
+                                   HorizontalOptions="Center"
+                                   FontSize="14"
+                                   Style="{StaticResource CarouselCaptionStyle}"/>
+                            
+                        </VerticalStackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+
+
+        <!--<HorizontalStackLayout HorizontalOptions="Fill">
+            <Button Text="{x:Static res:AppResources.Keep}"
+            Command="{Binding KeepCommand}"/>
+
+            <Button Text="{x:Static res:AppResources.Delete}"
+            Command="{Binding DeleteCommand}"
+        />
+        </HorizontalStackLayout>-->
+
+        <Grid ColumnDefinitions="*,*"
+      Padding="16">
+
+            <Button Text="{x:Static res:AppResources.Keep}"
+            Command="{Binding KeepCommand}"
+                    CommandParameter="{Binding Source={x:Reference ImagesCarousel}, Path=CurrentItem}"
+            HorizontalOptions="Start"
+            Grid.Column="0"
+            Style="{StaticResource PrimaryButtonStyle}" />
+
+            <Button Text="{x:Static res:AppResources.Delete}"
+            Command="{Binding DeleteCommand}"
+                    CommandParameter="{Binding Source={x:Reference ImagesCarousel}, Path=CurrentItem}"
+            HorizontalOptions="End"
+            Grid.Column="1"
+            Style="{StaticResource DangerButtonStyle}" />
+
+        </Grid>
+
+        <Grid ColumnDefinitions="*,*"
+Padding="16">
+
+            <Button Text="{x:Static res:AppResources.ConfirmDelete}"
+      Command="{Binding ConfirmDeleteCommand}"
+      HorizontalOptions="Start"
+      Grid.Column="0"
+      Style="{StaticResource DangerButtonStyle}" />
+
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

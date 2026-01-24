@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeepOrDeleteMediaCleaner.Views.MediaViewerMainPage"
+             xmlns:res="clr-namespace:KeepOrDeleteMediaCleaner.Resources.Strings"
+             Title="MediaViewerMainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!-- Color palette -->
+            <Color x:Key="PrimaryColor">#0F62FE</Color>
+            <Color x:Key="AccentColor">#7C4DFF</Color>
+            <Color x:Key="SurfaceColor">#FFFFFF</Color>
+            <Color x:Key="MutedTextColor">#6B6B6B</Color>
+            <Color x:Key="DangerColor">#D92D20</Color>
+
+            <!-- Brushes -->
+            <LinearGradientBrush x:Key="PageBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#F5F7FF" Offset="0.0" />
+                <GradientStop Color="#EEF2FF" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <!-- Typography / Styles -->
+            <Style x:Key="TitleLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="26" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="SubtitleLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Italic" />
+                <Setter Property="TextColor" Value="{StaticResource MutedTextColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="Padding" Value="14,8" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Brush="#66000000" Offset="0,4" Radius="8" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+            </Style>
+
+            <Style x:Key="DangerButtonStyle" TargetType="Button" BasedOn="{StaticResource PrimaryButtonStyle}">
+                <Setter Property="BackgroundColor" Value="{StaticResource DangerColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FBFDFF" Offset="0.0" />
+            <GradientStop Color="#F0F6FF" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout
+        Padding="20"
+        Spacing="30"
+        VerticalOptions="Center">
+
+        <Label
+            Text="{x:Static res:AppResources.WelcomeTitle}"
+            Style="{StaticResource TitleLabelStyle}" />
+
+        <Label 
+            Text="{x:Static res:AppResources.WelcomeSubtitle}"
+            Style="{StaticResource SubtitleLabelStyle}" />
+
+        <Button
+            Text="{x:Static res:AppResources.ScanImages}"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Clicked="OnScanImagesClicked"/>
+
+        <Button
+            Text="{x:Static res:AppResources.ScanVideos}"
+            Style="{StaticResource SecondaryButtonStyle}" />
+
+        <!--<Button
+            Text="{x:Static res:AppResources.Trash}"
+            Style="{StaticResource DangerButtonStyle}" />-->
+    </VerticalStackLayout>
+</ContentPage>

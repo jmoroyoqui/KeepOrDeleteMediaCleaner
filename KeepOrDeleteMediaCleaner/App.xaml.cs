@@ -1,12 +1,14 @@
-﻿namespace KeepOrDeleteMediaCleaner
+﻿using KeepOrDeleteMediaCleaner.Views;
+
+namespace KeepOrDeleteMediaCleaner
 {
     public partial class App : Application
     {
-        public App()
+        public App(MediaViewerMainPage page)
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(page);
         }
     }
 }
