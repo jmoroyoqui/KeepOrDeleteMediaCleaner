@@ -10,9 +10,11 @@ namespace KeepOrDeleteMediaCleaner.Models
     {
         public string Id { get; set; }
         public string FilePath { get; set; }
+        public string Uri { get; set; }
         public string DisplayName { get; set; }
         public DateTime DateCreated { get; set; }
-        public long Size { get; set; }
+        public double Size { get; set; }
+        public string SizeInMBString { get;set;}
         public bool IsVideo { get; set; }
     }
 }

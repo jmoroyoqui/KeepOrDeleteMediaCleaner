@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="456" height="456" viewBox="0 0 456 456" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="456" height="456" fill="#512BD4" />
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+
+	<!-- Fondo -->
+	<rect width="512" height="512" rx="96" fill="#1E88E5"></rect>
+
+	<!-- Marco de foto -->
+	<rect x="96" y="104" width="320" height="240" rx="24" fill="white"></rect>
+
+	<!-- Montañas -->
+	<path d="M128 312 L208 216 L272 280 L320 240 L384 312 Z" fill="#BBDEFB"></path>
+
+	<!-- Sol -->
+	<circle cx="320" cy="168" r="20" fill="#90CAF9"></circle>
+
+	<!-- Basura -->
+	<rect x="208" y="320" width="96" height="96" rx="16" fill="#EF5350"></rect>
+
+	<rect x="196" y="304" width="120" height="24" rx="12" fill="#C62828"></rect>
+
+	<!-- Líneas del bote -->
+	<rect x="228" y="340" width="8" height="56" fill="white"></rect>
+	<rect x="252" y="340" width="8" height="56" fill="white"></rect>
+	<rect x="276" y="340" width="8" height="56" fill="white"></rect>
+
 </svg>
