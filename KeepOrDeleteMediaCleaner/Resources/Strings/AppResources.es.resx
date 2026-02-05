@@ -141,6 +141,9 @@
   <data name="Trash" xml:space="preserve">
     <value>Papelera de Reciclaje</value>
   </data>
+  <data name="VideosTitle" xml:space="preserve">
+    <value>Videos en tu galeria</value>
+  </data>
   <data name="WelcomeSubtitle" xml:space="preserve">
     <value>Limpia tu galería fácilmente</value>
   </data>

@@ -107,9 +107,10 @@ namespace KeepOrDeleteMediaCleaner.ViewModels
         private void ConfirmDelete(MediaFile? file)
         {
 #if ANDROID
-            if(!listUri.Any()) return;
+            if (!listUri.Any()) return;
             AndroidMediaDeleteService.RequestDeleteList(listUri, success => {
-                if(success){
+                if (success)
+                {
                     //MainThread.BeginInvokeOnMainThread(RemoveFromCollection);
                 }
             });

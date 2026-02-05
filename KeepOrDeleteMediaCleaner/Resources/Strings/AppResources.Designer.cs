@@ -133,6 +133,15 @@ namespace KeepOrDeleteMediaCleaner.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Videos on gallery.
+        /// </summary>
+        internal static string VideosTitle {
+            get {
+                return ResourceManager.GetString("VideosTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clean your gallery easily.
         /// </summary>
         internal static string WelcomeSubtitle {

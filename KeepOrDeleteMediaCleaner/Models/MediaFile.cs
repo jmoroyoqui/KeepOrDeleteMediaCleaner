@@ -16,5 +16,6 @@ namespace KeepOrDeleteMediaCleaner.Models
         public double Size { get; set; }
         public string SizeInMBString { get;set;}
         public bool IsVideo { get; set; }
+        public TimeSpan? Duration { get; set; }
     }
 }

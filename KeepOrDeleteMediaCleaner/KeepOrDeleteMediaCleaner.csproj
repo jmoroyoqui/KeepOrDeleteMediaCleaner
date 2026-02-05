@@ -19,6 +19,7 @@
 		<OutputType>Exe</OutputType>
 		<RootNamespace>KeepOrDeleteMediaCleaner</RootNamespace>
 		<UseMaui>true</UseMaui>
+		<UseMauiMedia>true</UseMauiMedia>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -72,6 +73,9 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>AppResources.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\VideoScannerPage.xaml.cs">
+	    <DependentUpon>VideoScannerPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -82,6 +86,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\VideoScannerPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ImageScannerPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

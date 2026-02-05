@@ -31,8 +31,11 @@ namespace KeepOrDeleteMediaCleaner
 #if ANDROID
 
             builder.Services.AddSingleton<IImageScannerService, ImageScannerService>();
+            builder.Services.AddSingleton<IVideoScannerService, VideoScannerService>();
             builder.Services.AddSingleton<ImageViewerViewModel>();
             builder.Services.AddTransient<ImageScannerPage>();
+            builder.Services.AddSingleton<VideoViewerViewModel>();
+            builder.Services.AddTransient<VideoScannerPage>();
 #endif
 
             return builder.Build();
