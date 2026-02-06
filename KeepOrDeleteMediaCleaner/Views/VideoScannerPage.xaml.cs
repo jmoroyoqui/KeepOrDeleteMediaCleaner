@@ -22,7 +22,7 @@ public partial class VideoScannerPage : ContentPage
         {
             await Application.Current.MainPage.DisplayAlert(
             "Permiso requerido",
-            "La app necesita acceso a tus imágenes",
+            "La app necesita acceso a tus videos",
             "OK");
 
             return;

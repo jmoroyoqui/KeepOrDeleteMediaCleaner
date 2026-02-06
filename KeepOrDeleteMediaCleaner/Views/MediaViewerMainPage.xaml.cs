@@ -13,4 +13,11 @@ public partial class MediaViewerMainPage : ContentPage
 			App.Current.MainPage.Handler.MauiContext.Services.GetRequiredService<ImageScannerPage>()
             );
     }
+
+    private async void OnScanVideosClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(
+            App.Current.MainPage.Handler.MauiContext.Services.GetRequiredService<VideoScannerPage>()
+            );
+    }
 }

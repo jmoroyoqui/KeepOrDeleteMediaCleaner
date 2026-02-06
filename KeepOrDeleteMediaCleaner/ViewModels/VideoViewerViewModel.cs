@@ -178,6 +178,9 @@ namespace KeepOrDeleteMediaCleaner.ViewModels
         /// </remarks>
         public async Task InitializeAsync()
         {
+#if ANDROID
+            await Microsoft.Maui.ApplicationModel.Permissions.RequestAsync<ReadVideoPermissions>();
+#endif
             var images = await _mediaScannerService.GetVideosAsync();
 
             MediaFiles.Clear();

@@ -61,23 +61,33 @@ namespace KeepOrDeleteMediaCleaner.Platforms.Android.Services
 
         private string[]? GetProjection()
         {
+            //return new[]
+            //{
+            //    MediaStore.Video.Media.InterfaceConsts.Id,
+            //    MediaStore.Video.Media.InterfaceConsts.Data,
+            //    MediaStore.Video.Media.InterfaceConsts.DisplayName,
+            //    MediaStore.Video.Media.InterfaceConsts.DateAdded,
+            //    MediaStore.Video.Media.InterfaceConsts.Duration,
+            //    MediaStore.Video.Media.InterfaceConsts.Size
+            //};
             return new[]
             {
-                MediaStore.Video.Media.InterfaceConsts.Id,
-                MediaStore.Video.Media.InterfaceConsts.Data,
-                MediaStore.Video.Media.InterfaceConsts.DisplayName,
-                MediaStore.Video.Media.InterfaceConsts.DateAdded,
-                MediaStore.Video.Media.InterfaceConsts.Duration,
-                MediaStore.Video.Media.InterfaceConsts.Size
+                MediaStore.Files.FileColumns.Id,
+                MediaStore.Files.FileColumns.Data,
+                MediaStore.Files.FileColumns.DisplayName,
+                MediaStore.Files.FileColumns.DateAdded,
+                MediaStore.Video.VideoColumns.Duration,
+                MediaStore.Files.FileColumns.Size,
+
             };
         }
 
         private ICursor? GetCursor(string[] projection)
         {
             return Platform.CurrentActivity.ContentResolver.Query(
-                MediaStore.Video.Media.ExternalContentUri,
+                MediaStore.Files.GetContentUri("external"),
                 projection,
-                null,
+                MediaStore.Files.IFileColumns.MediaType + "=" + ((int)MediaType.Video),
                 null,
                 MediaStore.Video.Media.InterfaceConsts.DateAdded + " DESC");
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KeepOrDeleteMediaCleaner.Views.ImageScannerPage"
+             x:Class="KeepOrDeleteMediaCleaner.Views.VideoScannerPage"
              xmlns:res="clr-namespace:KeepOrDeleteMediaCleaner.Resources.Strings"
-             xmlns:media="clr-namespace:Microsoft.Maui.Controls;assembly=Microsoft.Maui.Controls"
+             xmlns:media="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Name="ThisPage"
              Title="{x:Static res:AppResources.VideosTitle}">
 
@@ -73,7 +73,11 @@
             <CarouselView.ItemTemplate>
                 <DataTemplate>
                     <Grid RowDefinitions="*,Auto" Padding="16" Style="{StaticResource CardGridStyle}">
-                        <media:MediaElement Source="{Binding FilePath}" Aspect="AspectFill" Margin="0,0,0,8" AutoPlay="false" ShowsPlaybackControls="true" HeightRequest=""/>
+                        <media:MediaElement
+                            Source="{Binding FilePath}"
+                            ShouldShowPlaybackControls="True"
+                            HeightRequest="300"/>
+
                         <VerticalStackLayout Grid.Row="1" Spacing="4">
 
                             <Label Text="{Binding DisplayName}"
@@ -96,8 +100,6 @@
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
-
-
 
         <!--<HorizontalStackLayout HorizontalOptions="Fill">
             <Button Text="{x:Static res:AppResources.Keep}"

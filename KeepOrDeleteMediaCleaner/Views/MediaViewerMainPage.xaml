@@ -87,7 +87,8 @@
 
         <Button
             Text="{x:Static res:AppResources.ScanVideos}"
-            Style="{StaticResource SecondaryButtonStyle}" />
+            Style="{StaticResource SecondaryButtonStyle}"
+            Clicked="OnScanVideosClicked"/>
 
         <!--<Button
             Text="{x:Static res:AppResources.Trash}"
