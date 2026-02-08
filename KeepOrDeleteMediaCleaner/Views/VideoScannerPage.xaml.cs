@@ -1,6 +1,7 @@
-
+using Android.Webkit;
 using KeepOrDeleteMediaCleaner.Permissions;
 using KeepOrDeleteMediaCleaner.ViewModels;
+using Plugin.Maui.VideoPlayer;
 
 namespace KeepOrDeleteMediaCleaner.Views;
 
@@ -29,5 +30,25 @@ public partial class VideoScannerPage : ContentPage
         }
         base.OnAppearing();
 		await _viewModel.InitializeAsync();
+    }
+
+    private void VideoCarousel_PositionChanged(object sender, PositionChangedEventArgs e)
+    {
+        if(sender is CarouselView carousel)
+        {
+            foreach(var view in carousel.VisibleViews)
+            {
+                if(view is Grid grid)
+                {
+                    foreach(var child in grid.Children)
+                    {
+                        if(child is VideoPlayer player)
+                        {
+                            player.Stop();
+                        }
+                    }
+                }
+            }   
+        }
     }
 }

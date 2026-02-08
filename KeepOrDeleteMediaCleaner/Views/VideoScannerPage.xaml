@@ -69,6 +69,7 @@
             x:Name="ImagesCarousel"
             HeightRequest="400"
             Position="{Binding CurrentIndex, Mode=TwoWay}"
+            PositionChanged="VideoCarousel_PositionChanged"
             ItemsUpdatingScrollMode="KeepLastItemInView">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
